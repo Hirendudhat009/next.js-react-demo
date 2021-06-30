@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport classes from './Card.module.css';\n\nfunction Card(props) {\n  return /*#__PURE__*/_jsx(\"div\", {\n    className: classes.card,\n    children: props.children\n  });\n}\n\nexport default Card;","map":null,"metadata":{},"sourceType":"module"}

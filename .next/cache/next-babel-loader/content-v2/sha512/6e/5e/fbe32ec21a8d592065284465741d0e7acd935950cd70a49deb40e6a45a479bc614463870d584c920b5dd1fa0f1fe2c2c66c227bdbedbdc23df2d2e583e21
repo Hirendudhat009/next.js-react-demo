@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport MeetupList from '../components/meetups/MeetupList';\n\nfunction HomePage(props) {\n  return /*#__PURE__*/_jsx(MeetupList, {\n    meetups: props.meetups\n  });\n}\n\nexport var __N_SSG = true;\nexport default HomePage;","map":null,"metadata":{},"sourceType":"module"}
