@@ -20,12 +20,20 @@ function meetupDetails(props) {
 
 export async function getStaticPaths() {
 
-    const client = await MongoClient.connect('mongodb+srv://hiren:hiren123@cluster0.loy2s.mongodb.net/test')
+    const MongoOptions = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    };
+
+    const client = await MongoClient.connect('mongodb+srv://hiren:hiren123@cluster0.loy2s.mongodb.net/test', MongoOptions)
+
     const db = client.db()
 
     const meetupsCollection = await db.collection('meetups')
 
     const result = await meetupsCollection.find({}, { _id: 1 }).toArray();
+
+    client.close();
 
     return {
         fallback: true,
@@ -51,12 +59,20 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
     const meetupId = context.params.meetupId
 
-    const client = await MongoClient.connect('mongodb+srv://hiren:hiren123@cluster0.loy2s.mongodb.net/test')
+    const MongoOptions = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    };
+
+
+    const client = await MongoClient.connect('mongodb+srv://hiren:hiren123@cluster0.loy2s.mongodb.net/test', MongoOptions)
     const db = client.db()
 
     const meetupsCollection = await db.collection('meetups')
 
     const result = await meetupsCollection.findOne({ _id: ObjectId(meetupId) })
+
+    client.close();
 
     return {
         props: {

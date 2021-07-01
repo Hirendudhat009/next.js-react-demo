@@ -44,7 +44,13 @@ function HomePage(props) {
 
 export async function getStaticProps() {
 
-    const client = await MongoClient.connect('mongodb+srv://hiren:hiren123@cluster0.loy2s.mongodb.net/test')
+    const MongoOptions = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    };
+
+
+    const client = await MongoClient.connect('mongodb+srv://hiren:hiren123@cluster0.loy2s.mongodb.net/test', MongoOptions)
     const db = client.db()
 
     const meetupsCollection = await db.collection('meetups')
