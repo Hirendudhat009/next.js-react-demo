@@ -57,6 +57,8 @@ export async function getStaticProps() {
 
     const result = await meetupsCollection.find().toArray()
 
+    client.close()
+
     return {
         props: {
             meetups: result.map(result => ({
